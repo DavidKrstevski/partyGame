@@ -1,17 +1,18 @@
-﻿using Mirror;
-using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LobbyManager : NetworkManager
+public class LobbyManager : MonoBehaviour
 {
-    public static event EventHandler OnClientCon;
-
-    public override void OnClientConnect(NetworkConnection conn)
+    [SerializeField]
+    private RoomManager manager;
+    void Start()
     {
-        base.OnClientConnect(conn);
-        OnClientCon?.Invoke(this, EventArgs.Empty);
+        manager = FindObjectOfType<RoomManager>();
     }
 
+    public void BackToMainMenu()
+    {
+        manager.StopHost();
+    }
 }

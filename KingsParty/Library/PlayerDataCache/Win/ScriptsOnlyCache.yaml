@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - LobbyManager
     - MenuManager
     - Player
+    - RoomManager
     Mirror.Components.dll:
     - Mirror.NetworkTransform
     Mirror.dll:
@@ -89,9 +90,39 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11276}
+    - Class: 114
+      Script: {instanceID: 11528}
+    - Class: 114
+      Script: {instanceID: 11976}
+    - Class: 114
+      Script: {instanceID: 12432}
+    - Class: 114
+      Script: {instanceID: 12686}
+    - Class: 114
+      Script: {instanceID: 12918}
+    - Class: 114
+      Script: {instanceID: 12990}
+    - Class: 114
+      Script: {instanceID: 13436}
+    - Class: 114
+      Script: {instanceID: 21562}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
     Assets/Scenes/MainMenu.unity:
     - Class: 1
@@ -121,47 +152,47 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11246}
+      Script: {instanceID: 11272}
     - Class: 114
-      Script: {instanceID: 11250}
+      Script: {instanceID: 11276}
     - Class: 114
-      Script: {instanceID: 11324}
+      Script: {instanceID: 11350}
     - Class: 114
-      Script: {instanceID: 11500}
+      Script: {instanceID: 11528}
     - Class: 114
-      Script: {instanceID: 11526}
+      Script: {instanceID: 11554}
     - Class: 114
-      Script: {instanceID: 11620}
+      Script: {instanceID: 11648}
     - Class: 114
-      Script: {instanceID: 11634}
+      Script: {instanceID: 11662}
     - Class: 114
-      Script: {instanceID: 11732}
+      Script: {instanceID: 11760}
     - Class: 114
-      Script: {instanceID: 11948}
+      Script: {instanceID: 11976}
     - Class: 114
-      Script: {instanceID: 11978}
+      Script: {instanceID: 12006}
     - Class: 114
-      Script: {instanceID: 12402}
+      Script: {instanceID: 12090}
     - Class: 114
-      Script: {instanceID: 12656}
+      Script: {instanceID: 12432}
     - Class: 114
-      Script: {instanceID: 12670}
+      Script: {instanceID: 12686}
     - Class: 114
-      Script: {instanceID: 12888}
+      Script: {instanceID: 12700}
     - Class: 114
-      Script: {instanceID: 12960}
+      Script: {instanceID: 12918}
     - Class: 114
-      Script: {instanceID: 13018}
+      Script: {instanceID: 12990}
     - Class: 114
-      Script: {instanceID: 13154}
+      Script: {instanceID: 13048}
     - Class: 114
-      Script: {instanceID: 13186}
+      Script: {instanceID: 13184}
     - Class: 114
-      Script: {instanceID: 13406}
+      Script: {instanceID: 13216}
     - Class: 114
-      Script: {instanceID: 14346}
+      Script: {instanceID: 13436}
     - Class: 114
-      Script: {instanceID: 21984}
+      Script: {instanceID: 13438}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -457,6 +488,12 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror
     className: NetworkRoomManager
+  - hash:
+      serializedVersion: 2
+      Hash: 025ea0f1911015022246065ac9eae4ee
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RoomManager
   - hash:
       serializedVersion: 2
       Hash: 9b01b1d80bd3ecf4eaca45e1a22d444e
@@ -777,6 +814,12 @@ ScriptsOnlyBuild:
     className: StandaloneInputModule
   - hash:
       serializedVersion: 2
+      Hash: ef3b820d63e6baf83c757ab6a40ffd4b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MenuManager
+  - hash:
+      serializedVersion: 2
       Hash: aa88ae22474df55295327e4ee99e5a24
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -813,13 +856,7 @@ ScriptsOnlyBuild:
     className: KcpTransport
   - hash:
       serializedVersion: 2
-      Hash: 7bafe709ee3e762d296658eebbe0d75c
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: MenuManager
-  - hash:
-      serializedVersion: 2
-      Hash: 36f24d1b0e21abb6bbb4226156aead3d
+      Hash: 08f20a9c21cafae5193046a42bae2010
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LobbyManager

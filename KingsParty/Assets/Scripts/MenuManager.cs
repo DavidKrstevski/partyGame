@@ -4,28 +4,23 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class MenuManager : MonoBehaviour
+public class MenuManager : NetworkBehaviour
 {
     [SerializeField]
-    private LobbyManager manager;
-    [SerializeField]
-    private TMP_InputField playernameInputField;
+    private NetworkManager manager;
+    public TMP_InputField playernameInputField;
+    public static string inputName;
     [SerializeField]
     private TMP_InputField ipAddressInputField;
+    [SerializeField]
+    private GameObject joinPanel;
 
     [SerializeField]
-    private GameObject hostButton;
+    private Button hostButton;
     [SerializeField]
-    private GameObject joinButton;
-    [SerializeField]
-    private GameObject cancleButton;
-
-
-    private void Start()
-    {
-        LobbyManager.OnClientCon += ClientConnected;
-    }
+    private Button joinButton;
 
     public void HostGame()
     {
@@ -33,47 +28,37 @@ public class MenuManager : MonoBehaviour
             return;
 
         manager.StartHost();
-        cancleButton.SetActive(true);
-        joinButton.SetActive(false);
-        hostButton.SetActive(false);
-
+        manager.ServerChangeScene("LobbyScene");
     }
 
     public void JoinGame()
     {
+        manager.networkAddress = ipAddressInputField.text;
+        manager.StartClient();
+        joinButton.interactable = false;
+        Invoke("ActivateJoinButton", 5);
+    }
+
+    public void ActivateJoinPanel()
+    {
         if (!CheckIfNameIsValid())
             return;
 
-        manager.networkAddress = ipAddressInputField.text;
-        manager.StartClient();
-        joinButton.SetActive(false);
-        cancleButton.SetActive(true);
+        joinPanel.SetActive(true);
     }
 
-    public void ExitGame()
-    {
-        Application.Quit();
-    }
+    public void DeactivateJoinPanel() => joinPanel.SetActive(false);
 
-    public void CancleConnection()
-    {
-        manager.StopClient();
-        cancleButton.SetActive(false);
-        hostButton.SetActive(true);
-        joinButton.SetActive(true);
-    }
+    public void ExitGame() => Application.Quit();
+
+    private void ActivateJoinButton() => joinButton.interactable = true;
 
     private bool CheckIfNameIsValid()
     {
-        if (string.IsNullOrEmpty(playernameInputField.text)){
+        if (string.IsNullOrEmpty(playernameInputField.text))
             return false;
-        }
+
+        inputName = playernameInputField.text;
         return true;
     }
-
-    private void ClientConnected(object sender, EventArgs e)
-    {
-        manager.ServerChangeScene("LobbyScene");
-    }
-
 }
