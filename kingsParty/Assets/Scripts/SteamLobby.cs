@@ -17,6 +17,8 @@ public class SteamLobby : MonoBehaviour
 
     NetworkManager networkManager;
 
+    public static CSteamID LobbyId { get; private set; }
+
     private void Start()
     {
         networkManager = GetComponent<NetworkManager>();
@@ -44,9 +46,10 @@ public class SteamLobby : MonoBehaviour
             return;
         }
 
+        LobbyId = new CSteamID(callback.m_ulSteamIDLobby);
         networkManager.StartHost();
 
-        SteamMatchmaking.SetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), HOST_ADDRESS_KEY, SteamUser.GetSteamID().ToString());
+        SteamMatchmaking.SetLobbyData(LobbyId, HOST_ADDRESS_KEY, SteamUser.GetSteamID().ToString());
     }
 
     private void OnGameLobbyJoinRequested(GameLobbyJoinRequested_t callback)
