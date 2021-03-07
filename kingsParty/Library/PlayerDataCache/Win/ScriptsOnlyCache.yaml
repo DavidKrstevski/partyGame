@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - MyNetworkManager
     - Player
     - SteamLobby
     Mirror.Components.dll:
@@ -8,7 +9,6 @@ ScriptsOnlyBuild:
     Mirror.dll:
     - Mirror.FizzySteam.FizzySteamworks
     - Mirror.NetworkIdentity
-    - Mirror.NetworkManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
@@ -35,6 +35,51 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
   sceneClasses:
+    Assets/Scenes/LobbyScene.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11288}
+    - Class: 114
+      Script: {instanceID: 12036}
+    - Class: 114
+      Script: {instanceID: 12850}
+    - Class: 114
+      Script: {instanceID: 13110}
+    - Class: 114
+      Script: {instanceID: 13194}
+    - Class: 114
+      Script: {instanceID: 13700}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
     Assets/Scenes/MenuScene.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -65,37 +110,37 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11288}
     - Class: 114
-      Script: {instanceID: 11496}
-    - Class: 114
       Script: {instanceID: 11556}
     - Class: 114
-      Script: {instanceID: 12034}
+      Script: {instanceID: 11582}
     - Class: 114
-      Script: {instanceID: 12072}
+      Script: {instanceID: 11738}
     - Class: 114
-      Script: {instanceID: 12294}
+      Script: {instanceID: 12036}
     - Class: 114
-      Script: {instanceID: 12560}
+      Script: {instanceID: 12074}
     - Class: 114
-      Script: {instanceID: 12832}
+      Script: {instanceID: 12296}
     - Class: 114
-      Script: {instanceID: 12848}
+      Script: {instanceID: 12562}
     - Class: 114
-      Script: {instanceID: 12862}
+      Script: {instanceID: 12834}
     - Class: 114
-      Script: {instanceID: 13108}
+      Script: {instanceID: 12850}
     - Class: 114
-      Script: {instanceID: 13192}
+      Script: {instanceID: 12864}
     - Class: 114
-      Script: {instanceID: 13264}
+      Script: {instanceID: 13110}
     - Class: 114
-      Script: {instanceID: 13412}
+      Script: {instanceID: 13194}
     - Class: 114
-      Script: {instanceID: 13448}
+      Script: {instanceID: 13266}
     - Class: 114
-      Script: {instanceID: 13698}
+      Script: {instanceID: 13414}
     - Class: 114
-      Script: {instanceID: 14200}
+      Script: {instanceID: 13450}
+    - Class: 114
+      Script: {instanceID: 13700}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -239,6 +284,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: TestResultRendererCallback
+  - hash:
+      serializedVersion: 2
+      Hash: b17f46862fce2748d4135256c5b538d7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Player
   - hash:
       serializedVersion: 2
       Hash: 234d407605354852c48e57df17c9a1c6
@@ -499,7 +550,7 @@ ScriptsOnlyBuild:
     className: SignalReceiver
   - hash:
       serializedVersion: 2
-      Hash: 89e66108acb0ecc9c70f5656434e15e7
+      Hash: 0f46d6e491732206fe6f78901eed610f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SteamLobby
@@ -761,13 +812,8 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.dll
     namespaceName: kcp2k
     className: KcpTransport
-  - hash:
-      serializedVersion: 2
-      Hash: 902ca742f518ed4d4e2c1704a34e2292
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Player
   platform: 5
   scenePathNames:
   - Assets/Scenes/MenuScene.unity
+  - Assets/Scenes/LobbyScene.unity
   playerPath: E:/SJ 20_21/Unity/partyGame/kingsParty/Builds/kingsParty.exe

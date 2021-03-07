@@ -2,26 +2,25 @@
 using Steamworks;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class SteamLobby : MonoBehaviour
+public class SteamLobby : NetworkBehaviour
 {
-    [SerializeField]
-    private GameObject hostButton;
-
     protected Callback<LobbyCreated_t> lobbyCreated;
     protected Callback<GameLobbyJoinRequested_t> gameLobbyJoinRequested;
     protected Callback<LobbyEnter_t> lobbyEntered;
 
     private const string HOST_ADDRESS_KEY = "HostAddress";
 
-    NetworkManager networkManager;
+    private MyNetworkManager networkManager;
 
     public static CSteamID LobbyId { get; private set; }
 
     private void Start()
     {
-        networkManager = GetComponent<NetworkManager>();
+        networkManager = GetComponent<MyNetworkManager>();
 
         if (!SteamManager.Initialized)
             return;
@@ -33,16 +32,28 @@ public class SteamLobby : MonoBehaviour
 
     public void HostLobby()
     {
-        hostButton.SetActive(false);
-
         SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypePrivate, networkManager.maxConnections);
+    }
+
+    public void LeaveLobby()
+    {
+        SteamMatchmaking.LeaveLobby(LobbyId);
+        if (isServer)
+            networkManager.StopHost();
+        else
+            networkManager.StopClient();
+        //SceneManager.LoadScene(mainMenuSceneName);
+    }
+
+    public void LeaveGame()
+    {
+        Application.Quit();
     }
 
     private void OnLobbyCreated(LobbyCreated_t callback)
     {
         if(callback.m_eResult != EResult.k_EResultOK)
         {
-            hostButton.SetActive(true);
             return;
         }
 
@@ -65,7 +76,5 @@ public class SteamLobby : MonoBehaviour
         string hostAddress = SteamMatchmaking.GetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), HOST_ADDRESS_KEY);
         networkManager.networkAddress = hostAddress;
         networkManager.StartClient();
-
-        hostButton.SetActive(false);
     }
 }
