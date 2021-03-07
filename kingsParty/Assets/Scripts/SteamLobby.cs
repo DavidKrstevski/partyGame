@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SteamLobby : NetworkBehaviour
+public class SteamLobby : MonoBehaviour
 {
     protected Callback<LobbyCreated_t> lobbyCreated;
     protected Callback<GameLobbyJoinRequested_t> gameLobbyJoinRequested;
@@ -30,32 +30,14 @@ public class SteamLobby : NetworkBehaviour
         lobbyEntered = Callback<LobbyEnter_t>.Create(OnLobbyEntered);
     }
 
-    public void HostLobby()
-    {
-        SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypePrivate, networkManager.maxConnections);
-    }
+    public void HostLobby() => SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypePrivate, networkManager.maxConnections);
 
-    public void LeaveLobby()
-    {
-        SteamMatchmaking.LeaveLobby(LobbyId);
-        if (isServer)
-            networkManager.StopHost();
-        else
-            networkManager.StopClient();
-        //SceneManager.LoadScene(mainMenuSceneName);
-    }
-
-    public void LeaveGame()
-    {
-        Application.Quit();
-    }
+    public void LeaveGame() => Application.Quit();
 
     private void OnLobbyCreated(LobbyCreated_t callback)
     {
         if(callback.m_eResult != EResult.k_EResultOK)
-        {
             return;
-        }
 
         LobbyId = new CSteamID(callback.m_ulSteamIDLobby);
         networkManager.StartHost();
@@ -63,10 +45,7 @@ public class SteamLobby : NetworkBehaviour
         SteamMatchmaking.SetLobbyData(LobbyId, HOST_ADDRESS_KEY, SteamUser.GetSteamID().ToString());
     }
 
-    private void OnGameLobbyJoinRequested(GameLobbyJoinRequested_t callback)
-    {
-        SteamMatchmaking.JoinLobby(callback.m_steamIDLobby);
-    }
+    private void OnGameLobbyJoinRequested(GameLobbyJoinRequested_t callback) => SteamMatchmaking.JoinLobby(callback.m_steamIDLobby);
 
     private void OnLobbyEntered(LobbyEnter_t callback)
     {
